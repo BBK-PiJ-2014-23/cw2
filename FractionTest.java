@@ -18,7 +18,12 @@ public class FractionTest {
         test(new Fraction(-1, -2),new Fraction(1, 2),"error test 4");
         test(new Fraction(4, -8),new Fraction(1, 2),"error test 5");
 
-        // extend with extra tests
+        // test add
+        test(new Fraction(1, 2).add(new Fraction(1, 2)), new Fraction(2, 2),"error addition test 1");
+        test(new Fraction(3, 5).add(new Fraction(2, 4)), new Fraction(22, 20),"error addition test 2");
+        test(new Fraction(2, 4).add(new Fraction(3, 5)), new Fraction(22, 20),"error addition test 3");
+        test(new Fraction(2, 5).add(new Fraction(2, -5)), new Fraction(0, 5),"error addition test 4");
+        test(new Fraction(6, 5).add(new Fraction(2, 4)), new Fraction(7, 5),"error addition test 5");
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
