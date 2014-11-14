@@ -24,34 +24,40 @@ public class FractionTest {
         test(new Fraction(2, 4).add(new Fraction(3, 5)), new Fraction(22, 20),"error addition test 3");
         test(new Fraction(2, 5).add(new Fraction(2, -5)), new Fraction(0, 5),"error addition test 4");
         test(new Fraction(6, 5).add(new Fraction(2, 4)), new Fraction(7, 5),"error addition test 5");
-        
+
         // test subtract
         test(new Fraction(2, 2).subtract(new Fraction(1, 2)), new Fraction(1, 2),"error subtraction test 1");
         test(new Fraction(3, 5).subtract(new Fraction(2, 4)), new Fraction(2, 20),"error subtraction test 2");
         test(new Fraction(2, 4).subtract(new Fraction(3, 5)), new Fraction(-2, 20),"error subtraction test 3");
         test(new Fraction(2, 5).subtract(new Fraction(2, -5)), new Fraction(4, 5),"error subtraction test 4");
         test(new Fraction(6, 5).subtract(new Fraction(2, 4)), new Fraction(7, 5),"error subtraction test 5");
-        
+
         // test divide
         test(new Fraction(2, 2).divide(new Fraction(1, 2)), new Fraction(4, 2),"error division test 1");
         test(new Fraction(3, 5).divide(new Fraction(2, 4)), new Fraction(12, 10),"error division test 2");
         test(new Fraction(2, 4).divide(new Fraction(3, 5)), new Fraction(10, 12),"error division test 3");
         test(new Fraction(2, 5).divide(new Fraction(2, -5)), new Fraction(-10, 10),"error division test 4");
         test(new Fraction(6, 5).divide(new Fraction(2, 4)), new Fraction(7, 5),"error division test 5");
-        
+
         // test absValue
         test(new Fraction(2, 2).absValue(), new Fraction(2, 2),"error absoluteValue test 1");
         test(new Fraction(-3, 5).absValue(), new Fraction(3, 5),"error absoluteValue test 2");
         test(new Fraction(2, -4).absValue(), new Fraction(2, 4),"error absoluteValue test 3");
         test(new Fraction(-2, -5).absValue(), new Fraction(2, 5),"error absoluteValue test 4");
         test(new Fraction(-2, 2).absValue(), new Fraction(-2, 2),"error absoluteValue test 5");
-        
-         // test negate
+
+        // test negate
         test(new Fraction(2, 2).negate(), new Fraction(-2, 2),"error NegateSign test 1");
         test(new Fraction(-3, 5).negate(), new Fraction(3, 5),"error NegateSign test 2");
         test(new Fraction(2, -4).negate(), new Fraction(2, 4),"error NegateSign test 3");
         test(new Fraction(-2, -5).negate(), new Fraction(-2, 5),"error NegateSign test 4");
         test(new Fraction(-2, 2).negate(), new Fraction(-2, 2),"error NegateSign test 5");
+        
+        // test toString
+        System.out.println(new Fraction(1, 2).toString());
+        System.out.println(new Fraction(1, 1).toString());
+        System.out.println(new Fraction(15, 5).toString());
+
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
