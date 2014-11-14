@@ -71,11 +71,11 @@ public class Fraction {
         int denom2 = other.getDenominator();
 
         if (denom1 != denom2) {
-            int[] commondDenumsAdjustedNums = getCommondDenumsAdjustedNums(num1, denom1, num2, denom2);
-            num1 = commondDenumsAdjustedNums[0];
-            denom1 = commondDenumsAdjustedNums[1];
-            num2 = commondDenumsAdjustedNums[2];
-            denom2 = commondDenumsAdjustedNums[3];
+            int[] commonDenumsAdjustedNums = getCommonDenumsAdjustedNums(num1, denom1, num2, denom2);
+            num1 = commonDenumsAdjustedNums[0];
+            denom1 = commonDenumsAdjustedNums[1];
+            num2 = commonDenumsAdjustedNums[2];
+            denom2 = commonDenumsAdjustedNums[3];
         }
         return new Fraction(num1 + num2, denom1); // irrelevant which denominator to insert, they are the same.
     }
@@ -87,11 +87,11 @@ public class Fraction {
         int denom2 = other.getDenominator();
 
         if (denom1 != denom2) {
-            int[] commondDenumsAdjustedNums = getCommondDenumsAdjustedNums(num1, denom1, num2, denom2);
-            num1 = commondDenumsAdjustedNums[0];
-            denom1 = commondDenumsAdjustedNums[1];
-            num2 = commondDenumsAdjustedNums[2];
-            denom2 = commondDenumsAdjustedNums[3];
+            int[] commonDenumsAdjustedNums = getCommonDenumsAdjustedNums(num1, denom1, num2, denom2);
+            num1 = commonDenumsAdjustedNums[0];
+            denom1 = commonDenumsAdjustedNums[1];
+            num2 = commonDenumsAdjustedNums[2];
+            denom2 = commonDenumsAdjustedNums[3];
         }
         return new Fraction(num1 - num2, denom1); // irrelevant which denominator to insert, they are the same.
     }
@@ -105,7 +105,7 @@ public class Fraction {
         return a;
     }
 
-    private int[] getCommondDenumsAdjustedNums(int num1, int denom1, int num2, int denom2) {
+    private int[] getCommonDenumsAdjustedNums(int num1, int denom1, int num2, int denom2) {
 
         // Moving a minus from denominator to nominator if neccesary.
         if (denom1 < 0) {
@@ -131,7 +131,7 @@ public class Fraction {
         num1 *= multiplicator1; // denom1 is already adjusted
         num2 *= multiplicator2;
         denom2 *= multiplicator2;
-        int[] commondDenumsAdjustedNums = {num1, denom1, num2, denom2};
-        return commondDenumsAdjustedNums;
+        int[] commonDenumsAdjustedNums = {num1, denom1, num2, denom2};
+        return commonDenumsAdjustedNums;
     }
 }
