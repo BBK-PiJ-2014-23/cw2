@@ -24,6 +24,13 @@ public class FractionTest {
         test(new Fraction(2, 4).add(new Fraction(3, 5)), new Fraction(22, 20),"error addition test 3");
         test(new Fraction(2, 5).add(new Fraction(2, -5)), new Fraction(0, 5),"error addition test 4");
         test(new Fraction(6, 5).add(new Fraction(2, 4)), new Fraction(7, 5),"error addition test 5");
+        
+        // test subtract
+        test(new Fraction(2, 2).subtract(new Fraction(1, 2)), new Fraction(1, 2),"error subtraction test 1");
+        test(new Fraction(3, 5).subtract(new Fraction(2, 4)), new Fraction(2, 20),"error subtraction test 2");
+        test(new Fraction(2, 4).subtract(new Fraction(3, 5)), new Fraction(-2, 20),"error subtraction test 3");
+        test(new Fraction(2, 5).subtract(new Fraction(2, -5)), new Fraction(4, 5),"error subtraction test 4");
+        test(new Fraction(6, 5).subtract(new Fraction(2, 4)), new Fraction(7, 5),"error subtraction test 5");
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
