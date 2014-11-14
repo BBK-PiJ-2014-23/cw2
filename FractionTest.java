@@ -38,6 +38,13 @@ public class FractionTest {
         test(new Fraction(2, 4).divide(new Fraction(3, 5)), new Fraction(10, 12),"error division test 3");
         test(new Fraction(2, 5).divide(new Fraction(2, -5)), new Fraction(-10, 10),"error division test 4");
         test(new Fraction(6, 5).divide(new Fraction(2, 4)), new Fraction(7, 5),"error division test 5");
+        
+        // test absValue
+        test(new Fraction(2, 2).absValue(), new Fraction(2, 2),"error absoluteValue test 1");
+        test(new Fraction(-3, 5).absValue(), new Fraction(3, 5),"error absoluteValue test 2");
+        test(new Fraction(2, -4).absValue(), new Fraction(2, 4),"error absoluteValue test 3");
+        test(new Fraction(-2, -5).absValue(), new Fraction(2, 5),"error absoluteValue test 4");
+        test(new Fraction(-2, 2).absValue(), new Fraction(-2, 2),"error absoluteValue test 5");
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
