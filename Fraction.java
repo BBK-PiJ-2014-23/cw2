@@ -80,6 +80,22 @@ public class Fraction {
         return new Fraction(num1 + num2, denom1); // irrelevant which denominator to insert, they are the same.
     }
 
+    public Fraction subtract(Fraction other) {
+        int num1 = this.getNumerator();
+        int denom1 = this.getDenominator();
+        int num2 = other.getNumerator();
+        int denom2 = other.getDenominator();
+
+        if (denom1 != denom2) {
+            int[] commondDenumsAdjustedNums = getCommondDenumsAdjustedNums(num1, denom1, num2, denom2);
+            num1 = commondDenumsAdjustedNums[0];
+            denom1 = commondDenumsAdjustedNums[1];
+            num2 = commondDenumsAdjustedNums[2];
+            denom2 = commondDenumsAdjustedNums[3];
+        }
+        return new Fraction(num1 - num2, denom1); // irrelevant which denominator to insert, they are the same.
+    }
+
     private int myGcd(int a, int b) {
         while (b != 0) {
             int t = b;
