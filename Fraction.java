@@ -103,6 +103,12 @@ public class Fraction {
         return new Fraction(num1 - num2, denom1); // irrelevant which denominator to insert, they are the same.
     }
 
+    public Fraction absValue() {
+        int num = Math.abs(getNumerator());
+        int denom = Math.abs(getDenominator());
+        return new Fraction(num, denom);
+    }
+    
     private int myGcd(int a, int b) {
         while (b != 0) {
             int t = b;
