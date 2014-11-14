@@ -45,6 +45,13 @@ public class FractionTest {
         test(new Fraction(2, -4).absValue(), new Fraction(2, 4),"error absoluteValue test 3");
         test(new Fraction(-2, -5).absValue(), new Fraction(2, 5),"error absoluteValue test 4");
         test(new Fraction(-2, 2).absValue(), new Fraction(-2, 2),"error absoluteValue test 5");
+        
+         // test negate
+        test(new Fraction(2, 2).negate(), new Fraction(-2, 2),"error NegateSign test 1");
+        test(new Fraction(-3, 5).negate(), new Fraction(3, 5),"error NegateSign test 2");
+        test(new Fraction(2, -4).negate(), new Fraction(2, 4),"error NegateSign test 3");
+        test(new Fraction(-2, -5).negate(), new Fraction(-2, 5),"error NegateSign test 4");
+        test(new Fraction(-2, 2).negate(), new Fraction(-2, 2),"error NegateSign test 5");
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
