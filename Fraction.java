@@ -64,6 +64,22 @@ public class Fraction {
         return new Fraction(num, denom);
     }
 
+    public Fraction add(Fraction other) {
+        int num1 = this.getNumerator();
+        int denom1 = this.getDenominator();
+        int num2 = other.getNumerator();
+        int denom2 = other.getDenominator();
+
+        if (denom1 != denom2) {
+            int[] commondDenumsAdjustedNums = getCommondDenumsAdjustedNums(num1, denom1, num2, denom2);
+            num1 = commondDenumsAdjustedNums[0];
+            denom1 = commondDenumsAdjustedNums[1];
+            num2 = commondDenumsAdjustedNums[2];
+            denom2 = commondDenumsAdjustedNums[3];
+        }
+        return new Fraction(num1 + num2, denom1); // irrelevant which denominator to insert, they are the same.
+    }
+
     private int myGcd(int a, int b) {
         while (b != 0) {
             int t = b;
@@ -71,5 +87,35 @@ public class Fraction {
             a = t;
         }
         return a;
+    }
+
+    private int[] getCommondDenumsAdjustedNums(int num1, int denom1, int num2, int denom2) {
+
+        // Moving a minus from denominator to nominator if neccesary.
+        if (denom1 < 0) {
+            num1 *= -1;
+            denom1 *= -1;
+        }
+        if (denom2 < 0) {
+            num2 *= -1;
+            denom2 *= -1;
+        }
+
+        // Finding common denominator
+        int multiplicator1 = 1;
+        int multiplicator2 = 1;
+        int initDenom1 = denom1;
+        while (denom1 % denom2 != 0) {
+            denom1 += initDenom1;
+            multiplicator1++;
+        }
+        multiplicator2 = denom1 / denom2;
+
+        // Adjusting all values
+        num1 *= multiplicator1; // denom1 is already adjusted
+        num2 *= multiplicator2;
+        denom2 *= multiplicator2;
+        int[] commondDenumsAdjustedNums = {num1, denom1, num2, denom2};
+        return commondDenumsAdjustedNums;
     }
 }
