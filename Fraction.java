@@ -108,7 +108,17 @@ public class Fraction {
         int denom = Math.abs(getDenominator());
         return new Fraction(num, denom);
     }
-    
+
+    public Fraction negate() {
+        int num = getNumerator();
+        int denom = getDenominator();
+        if (num > 0 && denom > 0 || num < 0 && denom < 0) {
+            return new Fraction(num * (-1), denom);
+        } else {
+            return absValue();
+        }
+    }
+
     private int myGcd(int a, int b) {
         while (b != 0) {
             int t = b;
