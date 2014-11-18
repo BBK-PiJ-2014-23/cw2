@@ -7,8 +7,8 @@ public class FractionCalculatorTest {
         calc.setOperator("+");
 
         calc.reset();
-        test(calc.getState(),new Fraction(1, 3),"error state rest test 1");
-        test(calc.getState(),new Fraction(0, 1),"error state rest test 2");
+        test(calc.getState(),new Fraction(1, 3),"error state reset test 1");
+        test(calc.getState(),new Fraction(0, 1),"error state reset test 2");
         test(calc.getOperator(),"+","error operator reset test 1");
         test(calc.getOperator(),"","error operator reset test 2");
 
