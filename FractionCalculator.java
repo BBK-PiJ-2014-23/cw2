@@ -35,6 +35,8 @@ public class FractionCalculator {
             return fraction.absValue();
         } else if (inputString.equals("n") || inputString.equals("N") || inputString.equals("neg")) {
             return fraction.negate();
+        } else if (inputString.equals("c") || inputString.equals("C") || inputString.equals("clear")) {
+            return new Fraction(0, 1);
         }
         return fraction;
     }
