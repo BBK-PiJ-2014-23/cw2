@@ -11,7 +11,14 @@ public class FractionCalculatorTest {
         test(calc.getState(),new Fraction(0, 1),"error state reset test 2");
         test(calc.getOperator(),"+","error operator reset test 1");
         test(calc.getOperator(),"","error operator reset test 2");
-
+        
+        calc.reset();
+        test(calc.evaluate(new Fraction(-1, 3),"a"),new Fraction(-1, 3),"error absolute value test 1");
+        test(calc.evaluate(new Fraction(-1, 3),"a"),new Fraction(1, 3),"error absolute value test 2");
+        test(calc.evaluate(new Fraction(1, -3),"a"),new Fraction(1, 3),"error absolute value test 3");
+        test(calc.evaluate(new Fraction(1, -3),"A"),new Fraction(1, 3),"error absolute value test 4");
+        test(calc.evaluate(new Fraction(1, -3),"abs"),new Fraction(1, 3),"error absolute value test 5");
+        
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
