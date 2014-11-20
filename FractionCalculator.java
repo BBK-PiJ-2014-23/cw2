@@ -33,6 +33,8 @@ public class FractionCalculator {
     public Fraction evaluate(Fraction fraction, String inputString) {
         if (inputString.equals("a") || inputString.equals("A") || inputString.equals("abs")) {
             return fraction.absValue();
+        } else if (inputString.equals("n") || inputString.equals("N") || inputString.equals("neg")) {
+            return fraction.negate();
         }
         return fraction;
     }
