@@ -32,11 +32,11 @@ public class FractionCalculator {
 
     public Fraction evaluate(Fraction fraction, String inputString) {
         if (inputString.equals("a") || inputString.equals("A") || inputString.equals("abs")) {
-            return fraction.absValue();
+            fraction = fraction.absValue();
         } else if (inputString.equals("n") || inputString.equals("N") || inputString.equals("neg")) {
-            return fraction.negate();
+            fraction = fraction.negate();
         } else if (inputString.equals("c") || inputString.equals("C") || inputString.equals("clear")) {
-            return new Fraction(0, 1);
+            fraction = new Fraction(0, 1);
         }
         return fraction;
     }
