@@ -19,13 +19,19 @@ public class FractionCalculatorTest {
         test(calc.evaluate(new Fraction(1, -3),"A"),new Fraction(1, 3),"error absolute value test 4");
         test(calc.evaluate(new Fraction(1, -3),"abs"),new Fraction(1, 3),"error absolute value test 5");
         
-         calc.reset();
+        calc.reset();
         test(calc.evaluate(new Fraction(-1, 3),"n"),new Fraction(-1, 3),"error negate value test 1");
         test(calc.evaluate(new Fraction(-1, 3),"n"),new Fraction(1, 3),"error negate value test 2");
         test(calc.evaluate(new Fraction(1, -3),"n"),new Fraction(1, 3),"error negate value test 3");
         test(calc.evaluate(new Fraction(-1, -3),"n"),new Fraction(-1, 3),"error negate value test 4");
         test(calc.evaluate(new Fraction(1, -3),"N"),new Fraction(1, 3),"error negate value test 5");
         test(calc.evaluate(new Fraction(1, -3),"neg"),new Fraction(1, 3),"error negate value test 6");
+        
+        calc.reset();
+        test(calc.evaluate(new Fraction(1, 3),"c"),new Fraction(1, 3),"error clear value test 1");
+        test(calc.evaluate(new Fraction(1, 3),"c"),new Fraction(0, 1),"error clear value test 2");
+        test(calc.evaluate(new Fraction(1, 3),"C"),new Fraction(0, 1),"error clear value test 3");
+        test(calc.evaluate(new Fraction(1, 3),"clear"),new Fraction(0, 1),"error clear value test 4");
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
