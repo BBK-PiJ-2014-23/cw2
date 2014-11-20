@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class FractionCalculator {
     private Fraction state;
     private String operator;
@@ -26,6 +28,13 @@ public class FractionCalculator {
     public void reset() {
         setState(new Fraction(0, 1));
         setOperator("");
+    }
+
+    public Fraction evaluate(Fraction fraction, String inputString) {
+        if (inputString.equals("a") || inputString.equals("A") || inputString.equals("abs")) {
+            return fraction.absValue();
+        }
+        return fraction;
     }
 
     public void statePrint() {
