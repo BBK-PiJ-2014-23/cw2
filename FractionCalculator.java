@@ -31,14 +31,38 @@ public class FractionCalculator {
     }
 
     public Fraction evaluate(Fraction fraction, String inputString) {
+        String operator = "";
         if (inputString.equals("a") || inputString.equals("A") || inputString.equals("abs")) {
             fraction = fraction.absValue();
         } else if (inputString.equals("n") || inputString.equals("N") || inputString.equals("neg")) {
             fraction = fraction.negate();
         } else if (inputString.equals("c") || inputString.equals("C") || inputString.equals("clear")) {
             fraction = new Fraction(0, 1);
-        }
+        } else {
+            String num = "";
+            for (int i = 0; i < inputString.length(); i++) {
+                char currentChar = inputString.charAt(i);
+                if (operator.equals("")) {
+                    if (Character.isSpaceChar(currentChar)) {
+                        if (num.length() > 0) {
+                            fraction = fractionFromStrings(num);
+                            num = "";
+                        }
+                    } else if (Character.isDigit(currentChar)) {
+                        num += currentChar;
+                    }
+                }
+            }
+            if (num.length() > 0) {
+                fraction = fractionFromStrings(num);
+            }
+        }    
         return fraction;
+    }
+
+    private Fraction fractionFromStrings(String num) {
+        int numerator = Integer.parseInt(num);
+        return new Fraction(numerator, 1);
     }
 
     public void statePrint() {
