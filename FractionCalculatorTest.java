@@ -38,6 +38,8 @@ public class FractionCalculatorTest {
         test(calc.evaluate(new Fraction(1, 3),"23"),new Fraction(23, 1),"error single int test 2");
         test(calc.evaluate(new Fraction(1, 3),"23 "),new Fraction(23, 1),"error single int test 3");
         test(calc.evaluate(new Fraction(1, 3)," 23"),new Fraction(23, 1),"error single int test 4");
+        test(calc.evaluate(new Fraction(1, 3),""),new Fraction(1, 3),"error single int test 4");
+        
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
