@@ -65,9 +65,33 @@ public class FractionCalculator {
                     } else {
                         operator = setOperator(currentChar);
                     }
+                } else {
+                    if (Character.isSpaceChar(currentChar)) {
+
+                    } else if (Character.isDigit(currentChar) && !isDenom) {
+                        num += currentChar;
+                    } else if (Character.isDigit(currentChar) && isDenom) {
+                        denom += currentChar;
+                    } else if (inputString.charAt(i) == '/') {
+                        if (i > 0 && Character.isDigit(inputString.charAt(i - 1))) {
+                            isDenom = true;
+                        } else {
+                            System.out.println("Error.");
+                            fraction = new Fraction(0, 1);
+                            num = "";
+                            denom = "";
+                            isDenom = false;
+                        }
+                    } else {
+                        System.out.println("Error.");
+                        fraction = new Fraction(0, 1);
+                        num = "";
+                        denom = "";
+                        isDenom = false;
+                    }
                 }
             }
-            if (!num.equals("")) {
+            if (!num.equals("") && operator.equals("")) {
                 fraction = fractionFromStrings(num, denom);
                 num = "";
                 denom = "";
