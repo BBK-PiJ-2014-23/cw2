@@ -65,6 +65,8 @@ public class FractionCalculator {
             }
             if (num.length() > 0) {
                 fraction = fractionFromStrings(num);
+                num = "";
+                isFraction = false;
             }
         }
         return fraction;
