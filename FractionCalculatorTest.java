@@ -34,11 +34,24 @@ public class FractionCalculatorTest {
         test(calc.evaluate(new Fraction(1, 3),"clear"),new Fraction(0, 1),"error clear value test 4");
 
         calc.reset();
+        test(calc.evaluate(new Fraction(1, 3),""),new Fraction(1, 3),"error empty input test");
+        
+        calc.reset();
         test(calc.evaluate(new Fraction(1, 3),"23"),new Fraction(1, 3),"error single int test 1");
         test(calc.evaluate(new Fraction(1, 3),"23"),new Fraction(23, 1),"error single int test 2");
         test(calc.evaluate(new Fraction(1, 3),"23 "),new Fraction(23, 1),"error single int test 3");
         test(calc.evaluate(new Fraction(1, 3)," 23"),new Fraction(23, 1),"error single int test 4");
-        test(calc.evaluate(new Fraction(1, 3),""),new Fraction(1, 3),"error single int test 4");
+        test(calc.evaluate(new Fraction(1, 3),"23 5"),new Fraction(5, 1),"error single int test 5");
+        test(calc.evaluate(new Fraction(1, 3),"23/5 /"),new Fraction(23, 5),"error single int test 6");
+        
+        calc.reset();
+        test(calc.evaluate(new Fraction(1, 3),"23/2"),new Fraction(1, 3),"error single fraction test 1");
+        test(calc.evaluate(new Fraction(1, 3),"23/2"),new Fraction(23, 2),"error single fraction test 2");
+        test(calc.evaluate(new Fraction(1, 3)," 23/2"),new Fraction(23, 2),"error single fraction test 3");
+        test(calc.evaluate(new Fraction(1, 3),"23/2 "),new Fraction(23, 2),"error single fraction test 4");
+        test(calc.evaluate(new Fraction(1, 3),"23/2 5/4"),new Fraction(5, 4),"error single fraction test 5");
+        test(calc.evaluate(new Fraction(1, 3),"23/2 /"),new Fraction(23, 2),"error single fraction test 5");
+        
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
