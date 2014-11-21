@@ -40,6 +40,7 @@ public class FractionCalculator {
             fraction = new Fraction(0, 1);
         } else {
             String num = "";
+            boolean isFraction = false;
             for (int i = 0; i < inputString.length(); i++) {
                 char currentChar = inputString.charAt(i);
                 if (operator.equals("")) {
@@ -47,22 +48,35 @@ public class FractionCalculator {
                         if (num.length() > 0) {
                             fraction = fractionFromStrings(num);
                             num = "";
+                            isFraction = false;
                         }
                     } else if (Character.isDigit(currentChar)) {
                         num += currentChar;
+                    } else if (inputString.charAt(i) == '/') {
+                        if (i > 0 && Character.isDigit(inputString.charAt(i - 1))) {
+                            isFraction = true;
+                        } else {
+                            operator = setOperator('/');
+                        }
+                    } else {
+                        operator = setOperator(currentChar);
                     }
                 }
             }
             if (num.length() > 0) {
                 fraction = fractionFromStrings(num);
             }
-        }    
+        }
         return fraction;
     }
 
     private Fraction fractionFromStrings(String num) {
         int numerator = Integer.parseInt(num);
         return new Fraction(numerator, 1);
+    }
+
+    private String setOperator(char operator) {
+        return Character.toString(operator);
     }
 
     public void statePrint() {
