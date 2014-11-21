@@ -42,60 +42,39 @@ public class FractionCalculator {
             String num = "";
             String denom = "";
             boolean isDenom = false;
-            for (int i = 0; i < inputString.length(); i++) {
+            boolean isValidInput = true;
+            int i = 0;
+            while (isValidInput && i < inputString.length()) {
                 char currentChar = inputString.charAt(i);
-                if (operator.equals("")) {
-                    if (Character.isSpaceChar(currentChar)) {
-                        if (!num.equals("")) {
-                            fraction = fractionFromStrings(num, denom);
-                            num = "";
-                            denom = "";
-                            isDenom = false;
-                        }
-                    } else if (Character.isDigit(currentChar) && !isDenom) {
-                        num += currentChar;
-                    } else if (Character.isDigit(currentChar) && isDenom) {
-                        denom += currentChar;
-                    } else if (inputString.charAt(i) == '/') {
-                        if (i > 0 && Character.isDigit(inputString.charAt(i - 1))) {
-                            isDenom = true;
-                        } else {
-                            operator = setOperator('/');
-                        }
-                    } else {
+                if (Character.isDigit(currentChar) && !isDenom) {
+                    num += currentChar;
+                } else if (Character.isDigit(currentChar) && isDenom) {
+                    denom += currentChar;
+                } else if (!Character.isSpaceChar(currentChar)) {
+                    if (i > 0 && currentChar == '/' && Character.isDigit(inputString.charAt(i - 1))) {
+                        isDenom = true;
+                    } else if (operator.equals("")) {
                         operator = setOperator(currentChar);
-                    }
-                } else {
-                    if (Character.isSpaceChar(currentChar)) {
-
-                    } else if (Character.isDigit(currentChar) && !isDenom) {
-                        num += currentChar;
-                    } else if (Character.isDigit(currentChar) && isDenom) {
-                        denom += currentChar;
-                    } else if (inputString.charAt(i) == '/') {
-                        if (i > 0 && Character.isDigit(inputString.charAt(i - 1))) {
-                            isDenom = true;
-                        } else {
-                            System.out.println("Error.");
-                            fraction = new Fraction(0, 1);
-                            num = "";
-                            denom = "";
-                            isDenom = false;
-                        }
                     } else {
                         System.out.println("Error.");
                         fraction = new Fraction(0, 1);
                         num = "";
                         denom = "";
                         isDenom = false;
+                        operator = "";
+                        isValidInput = false;
                     }
                 }
-            }
-            if (!num.equals("") && operator.equals("")) {
-                fraction = fractionFromStrings(num, denom);
-                num = "";
-                denom = "";
-                isDenom = false;
+
+                if (Character.isSpaceChar(currentChar) || i == inputString.length() - 1) {
+                    if (!num.equals("")) {
+                        fraction = fractionFromStrings(num, denom);
+                        num = "";
+                        denom = "";
+                        isDenom = false;
+                    }
+                }
+                i++;
             }
         }
         return fraction;
