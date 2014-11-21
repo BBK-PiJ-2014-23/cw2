@@ -68,7 +68,13 @@ public class FractionCalculator {
 
                 if (Character.isSpaceChar(currentChar) || i == inputString.length() - 1) {
                     if (!num.equals("")) {
-                        fraction = fractionFromStrings(num, denom);
+                        Fraction f = fractionFromStrings(num, denom);
+                        if (operator.equals("")) {
+                            fraction = f;
+                        } else if (operator.equals("*")) {
+                            fraction = fraction.multiply(f);
+                            operator = "";
+                        }
                         num = "";
                         denom = "";
                         isDenom = false;
