@@ -40,21 +40,25 @@ public class FractionCalculator {
             fraction = new Fraction(0, 1);
         } else {
             String num = "";
-            boolean isFraction = false;
+            String denum = "";
+            boolean isDenum = false;
             for (int i = 0; i < inputString.length(); i++) {
                 char currentChar = inputString.charAt(i);
                 if (operator.equals("")) {
                     if (Character.isSpaceChar(currentChar)) {
-                        if (num.length() > 0) {
-                            fraction = fractionFromStrings(num);
+                        if (!num.equals("")) {
+                            fraction = fractionFromStrings(num, denum);
                             num = "";
-                            isFraction = false;
+                            denum = "";
+                            isDenum = false;
                         }
-                    } else if (Character.isDigit(currentChar)) {
+                    } else if (Character.isDigit(currentChar) && !isDenum) {
                         num += currentChar;
+                    } else if (Character.isDigit(currentChar) && isDenum) {
+                        denum += currentChar;
                     } else if (inputString.charAt(i) == '/') {
                         if (i > 0 && Character.isDigit(inputString.charAt(i - 1))) {
-                            isFraction = true;
+                            isDenum = true;
                         } else {
                             operator = setOperator('/');
                         }
@@ -63,18 +67,24 @@ public class FractionCalculator {
                     }
                 }
             }
-            if (num.length() > 0) {
-                fraction = fractionFromStrings(num);
+            if (!num.equals("")) {
+                fraction = fractionFromStrings(num, denum);
                 num = "";
-                isFraction = false;
+                denum = "";
+                isDenum = false;
             }
         }
         return fraction;
     }
 
-    private Fraction fractionFromStrings(String num) {
+    private Fraction fractionFromStrings(String num, String denum) {
         int numerator = Integer.parseInt(num);
-        return new Fraction(numerator, 1);
+        if (!denum.equals("")) {
+            int denumerator = Integer.parseInt(denum);
+            return new Fraction(numerator, denumerator);
+        } else {
+            return new Fraction(numerator, 1);
+        }
     }
 
     private String setOperator(char operator) {
