@@ -1,20 +1,10 @@
 import java.util.*;
 
 public class FractionCalculator {
-    private Fraction state;
     private String operator;
 
     public FractionCalculator() {
-        state = new Fraction(0, 1);
         operator = "";
-    }
-
-    public void setState(Fraction fraction) {
-        state = fraction;
-    }
-
-    public Fraction getState() {
-        return state;
     }
 
     public void setOperator(String operator) {
@@ -26,7 +16,6 @@ public class FractionCalculator {
     }
 
     public void reset() {
-        setState(new Fraction(0, 1));
         setOperator("");
     }
 
@@ -60,7 +49,6 @@ public class FractionCalculator {
                         }
                     } else if (operator.equals("") && (currentChar == '*' || currentChar == '/' || currentChar == '+' || currentChar == '-')) {
                         operator = setOperator(currentChar);
-                        //System.out.println("Operator: " + operator);
                     } else {
                         System.out.println("Error.");
                         fraction = new Fraction(0, 1);
@@ -113,7 +101,6 @@ public class FractionCalculator {
     }
 
     public void statePrint() {
-        System.out.println("State: " + getState());
         System.out.println("Operator: " + getOperator());
         System.out.println();
     }
