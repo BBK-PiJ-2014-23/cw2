@@ -73,6 +73,13 @@ public class FractionCalculatorTest {
         test(calc.evaluate(new Fraction(0, 1),"/ 3/2"), new Fraction(0, 1), "error division test 3");
         test(calc.evaluate(new Fraction(1, 3),"/ 3/2"), new Fraction(2, 9), "error division test 4");
         test(calc.evaluate(new Fraction(0, 1),"1/2 / 1/2 / 1/2"), new Fraction(4, 2), "error division test 5");
+        
+        calc.reset();
+        test(calc.evaluate(new Fraction(1, 3),"3/2 + 3/2"), new Fraction(1, 3), "error addition test 1");
+        test(calc.evaluate(new Fraction(1, 3),"3/2 + 3/4"), new Fraction(9, 4), "error addition test 2");
+        test(calc.evaluate(new Fraction(0, 1),"+ 3/2"), new Fraction(3, 2), "error addition test 3");
+        test(calc.evaluate(new Fraction(1, 3),"+ 3/2"), new Fraction(11, 6), "error addition test 4");
+        test(calc.evaluate(new Fraction(0, 1),"1/2 + 1/2 + 1/3"), new Fraction(8, 6), "error addition test 5");
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
