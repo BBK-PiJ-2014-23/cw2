@@ -53,6 +53,12 @@ public class FractionCalculator {
                 } else if (!Character.isSpaceChar(currentChar)) {
                     if (i > 0 && currentChar == '/' && Character.isDigit(inputString.charAt(i - 1))) {
                         isDenom = true;
+                    } else if (currentChar == '-' && Character.isDigit(inputString.charAt(i + 1))) {
+                        if (isDenom) {
+                            denom += "-";
+                        } else {
+                            num += "-";
+                        }
                     } else if (operator.equals("") && (currentChar == '*' || currentChar == '/' || currentChar == '+' || currentChar == '-')) {
                         operator = setOperator(currentChar);
                     } else {
