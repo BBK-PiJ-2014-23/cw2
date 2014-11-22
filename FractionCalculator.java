@@ -31,7 +31,6 @@ public class FractionCalculator {
     }
 
     public Fraction evaluate(Fraction fraction, String inputString) {
-        String operator = "";
         if (inputString.equals("a") || inputString.equals("A") || inputString.equals("abs")) {
             fraction = fraction.absValue();
         } else if (inputString.equals("n") || inputString.equals("N") || inputString.equals("neg")) {
@@ -61,6 +60,7 @@ public class FractionCalculator {
                         }
                     } else if (operator.equals("") && (currentChar == '*' || currentChar == '/' || currentChar == '+' || currentChar == '-')) {
                         operator = setOperator(currentChar);
+                        //System.out.println("Operator: " + operator);
                     } else {
                         System.out.println("Error.");
                         fraction = new Fraction(0, 1);
