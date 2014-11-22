@@ -73,17 +73,14 @@ public class FractionCalculator {
                             fraction = f;
                         } else if (operator.equals("*")) {
                             fraction = fraction.multiply(f);
-                            operator = "";
                         } else if (operator.equals("/")) {
                             fraction = fraction.divide(f);
-                            operator = "";
                         } else if (operator.equals("+")) {
                             fraction = fraction.add(f);
-                            operator = "";
                         } else if (operator.equals("-")) {
                             fraction = fraction.subtract(f);
-                            operator = "";
                         }
+                        operator = "";
                         num = "";
                         denom = "";
                         isDenom = false;
