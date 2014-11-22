@@ -80,6 +80,20 @@ public class FractionCalculatorTest {
         test(calc.evaluate(new Fraction(0, 1),"+ 3/2"), new Fraction(3, 2), "error addition test 3");
         test(calc.evaluate(new Fraction(1, 3),"+ 3/2"), new Fraction(11, 6), "error addition test 4");
         test(calc.evaluate(new Fraction(0, 1),"1/2 + 1/2 + 1/3"), new Fraction(8, 6), "error addition test 5");
+        
+        calc.reset();
+        test(calc.evaluate(new Fraction(1, 3),"3/2 - 3/2"), new Fraction(1, 3), "error subtraction test 1");
+        test(calc.evaluate(new Fraction(1, 3),"3/2 - 3/4"), new Fraction(3, 4), "error subtraction test 2");
+        test(calc.evaluate(new Fraction(0, 1),"- 3/2"), new Fraction(-3, 2), "error subtraction test 3");
+        test(calc.evaluate(new Fraction(1, 3),"- 3/2"), new Fraction(-7, 6), "error subtraction test 4");
+        test(calc.evaluate(new Fraction(0, 1),"1/2 - 1/2 - 1/3"), new Fraction(-1, 3), "error subtraction test 5");
+        
+        calc.reset();
+        test(calc.evaluate(new Fraction(1, 3),"d"), new Fraction(1, 3), "error invalid input test 1");
+        test(calc.evaluate(new Fraction(1, 3),"d"), new Fraction(0, 1), "error invalid input test 2");
+        test(calc.evaluate(new Fraction(1, 3),"4 d"), new Fraction(0, 1), "error invalid input test 3");
+        test(calc.evaluate(new Fraction(1, 3),"4 + 4 + d"), new Fraction(0, 1), "error invalid input test 4");
+        test(calc.evaluate(new Fraction(1, 3),"5 + d"), new Fraction(0, 1), "error invalid input test 5");
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
