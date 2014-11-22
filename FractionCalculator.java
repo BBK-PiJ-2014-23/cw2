@@ -74,6 +74,9 @@ public class FractionCalculator {
                         } else if (operator.equals("*")) {
                             fraction = fraction.multiply(f);
                             operator = "";
+                        } else if (operator.equals("/")) {
+                            fraction = fraction.divide(f);
+                            operator = "";
                         }
                         num = "";
                         denom = "";
