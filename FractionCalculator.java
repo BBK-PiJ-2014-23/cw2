@@ -1,10 +1,45 @@
 import java.util.*;
 
 public class FractionCalculator {
+    public static void main(String[] args) {
+        FractionCalculator calc = new FractionCalculator();
+        calc.reset();
+        Scanner sc = new Scanner(System.in);
+        boolean finished = false;
+
+        System.out.println("Welcome to Stefan E. Mayer's calculator");
+        while (!finished) {
+            System.out.println("Current state: " + calc.getState().toString());
+            System.out.println("Current operator: " + calc.getOperator());
+            System.out.print("Input: ");
+            if (sc.hasNext()) {
+                String input = sc.nextLine();
+                if (input.equals("q") || input.equals("Q") || input.equals("quit")) {
+                    finished = true;
+                } else {
+                    calc.setState(calc.evaluate(calc.getState(), input));
+                }
+            } else {
+                System.out.println("Goodbye");
+                finished = true;
+            }
+        }
+    }
+
+    private Fraction state;
     private String operator;
 
     public FractionCalculator() {
+        Fraction state = new Fraction(0, 1);
         operator = "";
+    }
+
+    public void setState(Fraction fraction) {
+        state = fraction;
+    }
+
+    public Fraction getState() {
+        return state;
     }
 
     public void setOperator(String operator) {
@@ -16,6 +51,7 @@ public class FractionCalculator {
     }
 
     public void reset() {
+        state = new Fraction(0, 1);
         setOperator("");
     }
 
