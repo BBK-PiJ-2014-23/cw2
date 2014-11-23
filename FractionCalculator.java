@@ -135,9 +135,4 @@ public class FractionCalculator {
     private String setOperator(char operator) {
         return Character.toString(operator);
     }
-
-    public void statePrint() {
-        System.out.println("Operator: " + getOperator());
-        System.out.println();
-    }
 }
