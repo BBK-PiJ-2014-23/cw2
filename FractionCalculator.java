@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class FractionCalculator {
+
     public static void main(String[] args) {
         FractionCalculator calc = new FractionCalculator();
         calc.reset();
@@ -86,7 +87,7 @@ public class FractionCalculator {
                     } else if (operator.equals("") && (currentChar == '*' || currentChar == '/' || currentChar == '+' || currentChar == '-')) {
                         operator = setOperator(currentChar);
                     } else {
-                        System.out.println("Error.");
+                        System.out.println("Error");
                         fraction = new Fraction(0, 1);
                         num = "";
                         denom = "";
